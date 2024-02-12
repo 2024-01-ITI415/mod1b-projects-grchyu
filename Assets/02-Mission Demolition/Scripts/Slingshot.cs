@@ -68,7 +68,7 @@ public class Slingshot : MonoBehaviour
         projectileRigidbody= projectile.GetComponent <Rigidbody>();
         projectileRigidbody.isKinematic = true;
     }
-    private void Update()
+    void Update()
     {
         if (!aimingMode) return;
 
@@ -95,6 +95,9 @@ public class Slingshot : MonoBehaviour
             projectileRigidbody.velocity = -mouseDelta * velocityMult;
             FollowCam.POI = projectile;
             projectile = null;
+            MissionDemolition.ShotFired();                             // a
+
+            ProjectileLine.S.poi = projectile;
         }
     }
 }
